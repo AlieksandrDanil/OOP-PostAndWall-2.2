@@ -16,6 +16,7 @@ data class Post(
     var postType: PostType,
 
     var postSource: PostSource?,
+    var attachments: Array<Attachment>?,
     var geo: Geo?,
     var signerId: Int,
     var copyHistory: Array<Reposts>?,
@@ -65,8 +66,23 @@ data class Post(
         val url: String
     ) {
         enum class Type {
-            vk, widget, api, rss, sms
+            Vk, Widget, Api, Rss, Sms
         }
+    }
+    abstract class Attachment() {
+        data class Video(
+            val id: Int,
+            val album_id: Int,
+            val owner_id: Int,
+            val user_id: Int
+        ) : Attachment()
+
+        data class Audio(
+            val id: Int,
+            val album_id: Int,
+            val owner_id: Int,
+            val user_id: Int
+        ) : Attachment()
     }
     data class Geo(
         val type: String,
