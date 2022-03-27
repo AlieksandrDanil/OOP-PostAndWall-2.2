@@ -31,8 +31,9 @@ data class Post(
     var postponedId: Int
 ) {
     enum class PostType {
-        post, copy, reply, postpone, suggest
+        Post, Copy, Reply, Postpone, Suggest
     }
+
     data class Comments(
         val count: Int,
         val canPost: Boolean = false,
@@ -40,25 +41,30 @@ data class Post(
         val canClose: Boolean = false,
         val canOpen: Boolean = false
     )
+
     data class Copyright(
         val id: Int,
         val link: String,
         val name: String,
         val type: String
     )
+
     data class Likes(
         val count: Int,
         val userLikes: Boolean = false,
         val canLike: Boolean = false,
         val canPublish: Boolean = false
     )
+
     data class Reposts(
         val count: Int,
         val userReposted: Boolean = false
     )
+
     data class Views(
         val count: Int
     )
+
     data class PostSource(
         val type: Type?,
         val platform: String?,
@@ -69,21 +75,63 @@ data class Post(
             Vk, Widget, Api, Rss, Sms
         }
     }
-    abstract class Attachment() {
+
+    abstract class Attachment {
+        enum class Type {
+            Photo, Video, Audio, Document, Contact
+        }
+
+        abstract val type: Type
+        abstract val id: Int
+        abstract val ownerId: Int
+        abstract val userId: Int
+
+        data class Photo(
+            override val type: Type,
+            override val id: Int,
+            override val ownerId: Int,
+            override val userId: Int,
+            val albumId: Int,
+            val albumName: String
+        ) : Attachment()
+
         data class Video(
-            val id: Int,
-            val album_id: Int,
-            val owner_id: Int,
-            val user_id: Int
+            override val type: Type,
+            override val id: Int,
+            override val ownerId: Int,
+            override val userId: Int,
+            val videoName: String,
+            val videoSize: Int
         ) : Attachment()
 
         data class Audio(
-            val id: Int,
-            val album_id: Int,
-            val owner_id: Int,
-            val user_id: Int
+            override val type: Type,
+            override val id: Int,
+            override val ownerId: Int,
+            override val userId: Int,
+            val albumId: Int,
+            val albumName: String,
+            val trackId: Int
+        ) : Attachment()
+
+        data class Document(
+            override val type: Type,
+            override val id: Int,
+            override val ownerId: Int,
+            override val userId: Int,
+            val docType: String,
+            val totalPagesNumber: Int
+        ) : Attachment()
+
+        data class Contact(
+            override var type: Type,
+            override val id: Int,
+            override val ownerId: Int,
+            override val userId: Int,
+            val phoneNumber: String
         ) : Attachment()
     }
+
     data class Geo(
         val type: String,
         val coordinates: String,
@@ -104,6 +152,7 @@ data class Post(
             val address: String
         )
     }
+
     data class Donut(
         val isDonut: Boolean = false,
         val paidDuration: Int,

@@ -14,9 +14,15 @@ fun main() {     // функция main - только для ручного т�
         Post.Likes(95, userLikes = false, canLike = true, canPublish = false),
         Post.Reposts(47, true),
         Post.Views(2),
-        Post.PostType.post,
+        Post.PostType.Post,
         Post.PostSource(Post.PostSource.Type.Vk,null,null," https://vk.com/"),
-        attachments = arrayOf(Post.Attachment.Video(111,222,333,444), Post.Attachment.Audio(11,22,33,44)),
+        attachments = arrayOf(
+            Post.Attachment.Video(Post.Attachment.Type.Video, 2, 25, 12, "My walk", 128),
+            Post.Attachment.Audio(Post.Attachment.Type.Audio, 3, 17, 3, 309, "Florida", 2),
+            Post.Attachment.Photo(Post.Attachment.Type.Photo, 1, 4, 18, 4, "MyTripToSouth"),
+            Post.Attachment.Contact(Post.Attachment.Type.Contact, 11, 42, 10, "+7-918-356-37-82"),
+            Post.Attachment.Document(Post.Attachment.Type.Document, 8, 402, 15, ".doc", 153)
+        ),
         Post.Geo("","",Post.Geo.Place(1,"",253511, 101537, 1647797883,"", 5, 1647797883, 2, 159, 25,"")),
         25,
         copyHistory = (arrayOf(Post.Reposts(49, false), Post.Reposts(50, true))),
@@ -46,9 +52,15 @@ fun main() {     // функция main - только для ручного т�
         Post.Likes(95, userLikes = false, canLike = true, canPublish = true),
         Post.Reposts(47, false),
         Post.Views(15),
-        Post.PostType.suggest,
+        Post.PostType.Suggest,
         Post.PostSource(Post.PostSource.Type.Rss,null,null," https://vk.com/"),
-        attachments = arrayOf(Post.Attachment.Video(1,2,3,4), Post.Attachment.Audio(2,55,43,1)),
+        attachments = arrayOf(
+            Post.Attachment.Video(Post.Attachment.Type.Video, 22, 25, 12, "My walk", 128),
+            Post.Attachment.Audio(Post.Attachment.Type.Audio, 33, 17, 3, 309, "Florida", 2),
+            Post.Attachment.Photo(Post.Attachment.Type.Photo, 11, 4, 18, 4, "MyTripToSouth"),
+            Post.Attachment.Contact(Post.Attachment.Type.Contact, 113, 42, 10, "+7-918-356-37-82"),
+            Post.Attachment.Document(Post.Attachment.Type.Document, 88, 402, 15, ".xls", 153)
+        ),
         Post.Geo("","",Post.Geo.Place(2,"", 253511, 101580, 1647797905,"", 5, 1647797905, 1, 183, 29,"")),
         47,
         copyHistory = (arrayOf(Post.Reposts(49, false), Post.Reposts(51, false))),
@@ -77,9 +89,15 @@ fun main() {     // функция main - только для ручного т�
         likes = Post.Likes(96, userLikes = true, canLike = true, canPublish = true),
         reposts = Post.Reposts(48, false),
         views = Post.Views(10),
-        postType = Post.PostType.reply,
+        postType = Post.PostType.Reply,
         postSource = Post.PostSource(Post.PostSource.Type.Api,null,null," https://vk.com/"),
-        attachments = arrayOf(Post.Attachment.Video(42,53,44,3), Post.Attachment.Audio(555,33,44,4)),
+        attachments = arrayOf(
+            Post.Attachment.Video(Post.Attachment.Type.Video, 32, 25, 12, "My walk", 128),
+            Post.Attachment.Audio(Post.Attachment.Type.Audio, 35, 17, 3, 309, "Florida", 2),
+            Post.Attachment.Photo(Post.Attachment.Type.Photo, 61, 4, 18, 4, "MyTripToSouth"),
+            Post.Attachment.Contact(Post.Attachment.Type.Contact, 33, 24, 182, "+7-918-356-37-82"),
+            Post.Attachment.Document(Post.Attachment.Type.Document, 76, 43, 13, ".txt", 12)
+        ),
         //geo = Post.Geo("","",Post.Geo.Place(2,"", 253511, 101580, 1647797905,"", 5, 1647797905, 1, 183, 29,"")),
         geo = Post.Geo("MyTypePlace","N:253511, W:101580",null),
         signerId = 61,
@@ -102,9 +120,4 @@ fun main() {     // функция main - только для ручного т�
     println(temp3.update(copyUpdated))
     val temp4: Post = temp3.posts[1]
     println(temp4)
-
-//    println(WallService.add(original))
-//    println(WallService.add(copy))
-//    println(WallService.update(copyUpdated))
-//    println(WallService.posts.last())
 }
