@@ -17,11 +17,11 @@ fun main() {     // функция main - только для ручного т�
         Post.PostType.Post,
         Post.PostSource(Post.PostSource.Type.Vk,null,null," https://vk.com/"),
         attachments = arrayOf(
-            Post.Attachment.Video(Post.Attachment.Type.Video, 2, 25, 12, "My walk", 128),
-            Post.Attachment.Audio(Post.Attachment.Type.Audio, 3, 17, 3, 309, "Florida", 2),
-            Post.Attachment.Photo(Post.Attachment.Type.Photo, 1, 4, 18, 4, "MyTripToSouth"),
-            Post.Attachment.Contact(Post.Attachment.Type.Contact, 11, 42, 10, "+7-918-356-37-82"),
-            Post.Attachment.Document(Post.Attachment.Type.Document, 8, 402, 15, ".doc", 153)
+            Post.Attachment.Photo.FhotoAttachment(Post.Attachment.Photo(Post.Attachment.Type.Photo, 1, 4, 18, 4, "MyTripToSouth"),"My New Photo Attached File"),
+            Post.Attachment.Video.VideoAttachment(Post.Attachment.Video(Post.Attachment.Type.Video, 2, 25, 12, "My walk", 128),"My New Video Attached File"),
+            Post.Attachment.Audio.AudioAttachment(Post.Attachment.Audio(Post.Attachment.Type.Audio, 3, 17, 3, 309, "Florida", 2), "My New Audio Attached File"),
+            Post.Attachment.Document.DocumentAttachment(Post.Attachment.Document(Post.Attachment.Type.Document, 8, 402, 15, ".doc", 153),"My New Document Attached File"),
+            Post.Attachment.Contact.ContactAttachment(Post.Attachment.Contact(Post.Attachment.Type.Contact, 11, 42, 10, "+7-918-356-37-82"), "My New Contact Attached File")
         ),
         Post.Geo("","",Post.Geo.Place(1,"",253511, 101537, 1647797883,"", 5, 1647797883, 2, 159, 25,"")),
         25,
@@ -55,11 +55,11 @@ fun main() {     // функция main - только для ручного т�
         Post.PostType.Suggest,
         Post.PostSource(Post.PostSource.Type.Rss,null,null," https://vk.com/"),
         attachments = arrayOf(
-            Post.Attachment.Video(Post.Attachment.Type.Video, 22, 25, 12, "My walk", 128),
-            Post.Attachment.Audio(Post.Attachment.Type.Audio, 33, 17, 3, 309, "Florida", 2),
-            Post.Attachment.Photo(Post.Attachment.Type.Photo, 11, 4, 18, 4, "MyTripToSouth"),
-            Post.Attachment.Contact(Post.Attachment.Type.Contact, 113, 42, 10, "+7-918-356-37-82"),
-            Post.Attachment.Document(Post.Attachment.Type.Document, 88, 402, 15, ".xls", 153)
+            Post.Attachment.Photo.FhotoAttachment(Post.Attachment.Photo(Post.Attachment.Type.Photo, 1, 4, 18, 4, "MyTripToSouth"),"My New Updated Photo Attached File"),
+            Post.Attachment.Video.VideoAttachment(Post.Attachment.Video(Post.Attachment.Type.Video, 2, 25, 12, "My walk", 128),"My New Updated Video Attached File"),
+            Post.Attachment.Audio.AudioAttachment(Post.Attachment.Audio(Post.Attachment.Type.Audio, 3, 17, 3, 309, "Florida", 2), "My New Updated Audio Attached File"),
+            Post.Attachment.Document.DocumentAttachment(Post.Attachment.Document(Post.Attachment.Type.Document, 8, 402, 15, ".doc", 153),"My New Updated Document Attached File"),
+            Post.Attachment.Contact.ContactAttachment(Post.Attachment.Contact(Post.Attachment.Type.Contact, 11, 42, 10, "+7-918-356-37-82"), "My New Updated Contact Attached File")
         ),
         Post.Geo("","",Post.Geo.Place(2,"", 253511, 101580, 1647797905,"", 5, 1647797905, 1, 183, 29,"")),
         47,
@@ -92,11 +92,11 @@ fun main() {     // функция main - только для ручного т�
         postType = Post.PostType.Reply,
         postSource = Post.PostSource(Post.PostSource.Type.Api,null,null," https://vk.com/"),
         attachments = arrayOf(
-            Post.Attachment.Video(Post.Attachment.Type.Video, 32, 25, 12, "My walk", 128),
-            Post.Attachment.Audio(Post.Attachment.Type.Audio, 35, 17, 3, 309, "Florida", 2),
-            Post.Attachment.Photo(Post.Attachment.Type.Photo, 61, 4, 18, 4, "MyTripToSouth"),
-            Post.Attachment.Contact(Post.Attachment.Type.Contact, 33, 24, 182, "+7-918-356-37-82"),
-            Post.Attachment.Document(Post.Attachment.Type.Document, 76, 43, 13, ".txt", 12)
+            Post.Attachment.Photo.FhotoAttachment(Post.Attachment.Photo(Post.Attachment.Type.Photo, 1, 4, 18, 4, "MyTripToSouth"),"My New Photo Attached File"),
+            Post.Attachment.Video.VideoAttachment(Post.Attachment.Video(Post.Attachment.Type.Video, 2, 25, 12, "My walk", 128),"My New Video Attached File"),
+            Post.Attachment.Audio.AudioAttachment(Post.Attachment.Audio(Post.Attachment.Type.Audio, 3, 17, 3, 309, "Florida", 2), "My New Audio Attached File"),
+            Post.Attachment.Document.DocumentAttachment(Post.Attachment.Document(Post.Attachment.Type.Document, 8, 402, 15, ".doc", 153),"My New Document Attached File"),
+            Post.Attachment.Contact.ContactAttachment(Post.Attachment.Contact(Post.Attachment.Type.Contact, 11, 42, 10, "+7-918-356-37-82"), "My New Contact Attached File")
         ),
         //geo = Post.Geo("","",Post.Geo.Place(2,"", 253511, 101580, 1647797905,"", 5, 1647797905, 1, 183, 29,"")),
         geo = Post.Geo("MyTypePlace","N:253511, W:101580",null),

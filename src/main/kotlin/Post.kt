@@ -76,60 +76,82 @@ data class Post(
         }
     }
 
-    abstract class Attachment {
+    sealed class Attachment(val type: String) {
         enum class Type {
             Photo, Video, Audio, Document, Contact
         }
 
-        abstract val type: Type
-        abstract val id: Int
-        abstract val ownerId: Int
-        abstract val userId: Int
+        open val strType: Type = Type.Document
 
         data class Photo(
-            override val type: Type,
-            override val id: Int,
-            override val ownerId: Int,
-            override val userId: Int,
+            override val strType: Type = Type.Photo,
+            val id: Int,
+            val ownerId: Int,
+            val userId: Int,
             val albumId: Int,
             val albumName: String
-        ) : Attachment()
+        ) : Attachment(Type.Photo.toString()) {
+            data class FhotoAttachment(
+                val photo: Photo,
+                val remark: String
+            ) : Attachment(Type.Photo.toString())
+        }
 
         data class Video(
-            override val type: Type,
-            override val id: Int,
-            override val ownerId: Int,
-            override val userId: Int,
+            override val strType: Type = Type.Video,
+            val id: Int,
+            val ownerId: Int,
+            val userId: Int,
             val videoName: String,
             val videoSize: Int
-        ) : Attachment()
+        ) : Attachment(Type.Video.toString()) {
+            data class VideoAttachment(
+                val video: Video,
+                val remark: String
+            ) : Attachment(Type.Video.toString())
+        }
 
         data class Audio(
-            override val type: Type,
-            override val id: Int,
-            override val ownerId: Int,
-            override val userId: Int,
+            override val strType: Type = Type.Audio,
+            val id: Int,
+            val ownerId: Int,
+            val userId: Int,
             val albumId: Int,
             val albumName: String,
             val trackId: Int
-        ) : Attachment()
+        ) : Attachment(Type.Audio.toString()) {
+            data class AudioAttachment(
+                val audio: Audio,
+                val remark: String
+            ) : Attachment(Type.Audio.toString())
+        }
 
         data class Document(
-            override val type: Type,
-            override val id: Int,
-            override val ownerId: Int,
-            override val userId: Int,
+            override val strType: Type = Type.Document,
+            val id: Int,
+            val ownerId: Int,
+            val userId: Int,
             val docType: String,
             val totalPagesNumber: Int
-        ) : Attachment()
+        ) : Attachment(Type.Document.toString()) {
+            data class DocumentAttachment(
+                val document: Document,
+                val remark: String
+            ) : Attachment(Type.Document.toString())
+        }
 
         data class Contact(
-            override var type: Type,
-            override val id: Int,
-            override val ownerId: Int,
-            override val userId: Int,
+            override val strType: Type,
+            val id: Int,
+            val ownerId: Int,
+            val userId: Int,
             val phoneNumber: String
-        ) : Attachment()
+        ) : Attachment(Type.Contact.toString()) {
+            data class ContactAttachment(
+                val contact: Contact,
+                val remark: String
+            ) : Attachment(Type.Contact.toString())
+        }
     }
 
     data class Geo(
