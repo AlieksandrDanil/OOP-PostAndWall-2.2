@@ -120,4 +120,11 @@ fun main() {     // функция main - только для ручного т�
     println(temp3.update(copyUpdated))
     val temp4: Post = temp3.posts[1]
     println(temp4)
+
+    val service = temp3
+    val comment1 = Comment(21,1,15,"New Comment For PostId = 1",4,"photo",15,"GUID NUMBER")
+    val comment2 = Comment(52,2,17,"New Comment For PostId = 2",4,"video",17,"GUID NUMBER")
+
+    println(service.createComment(comment1))
+    println(service.createComment(comment2))
 }
